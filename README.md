@@ -1,16 +1,46 @@
-## Hi there 👋
+# BitByte Labs Company Website
 
-<!--
-**bitbytelabs/bitbytelabs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+A modern, responsive company website built with HTML, CSS, and JavaScript, served by a Node.js backend.
 
-Here are some ideas to get you started:
+## Features
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+- Full-screen hero section with CTA buttons
+- Services, work, insights, and team highlights
+- Contact form UI with client-side messaging
+- Responsive navigation for mobile
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ recommended
+
+### Install
+
+```bash
+npm install
+```
+
+### Run the server
+
+```bash
+npm start
+```
+
+Then visit [http://localhost:3000](http://localhost:3000).
+
+## Project Structure
+
+```
+public/
+  app.js
+  index.html
+  styles.css
+server.js
+package.json
+```
+
+## Notes
+
+- The contact form is client-side only and does not submit to a backend endpoint.
+- Update the content in `public/index.html` to reflect your brand.
