@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Universe | 3D Engine</title>
+    <link rel="stylesheet" href="engine.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Roblox Universe">
+          <span class="logo-block">R</span>
+          <span class="logo-word">Roblox Universe Engine</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="accounts.html">Accounts</a>
+          <a class="active" href="engine.html">Engine</a>
+          <a href="studio.html">Studio</a>
+          <a href="assets.html">Assets</a>
+          <a class="button" href="multiplayer.html">Multiplayer</a>
+        </div>
+      </nav>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">3D Engine</p>
+          <h1>Explore a real-time sandbox.</h1>
+          <p class="hero-subtitle">
+            Use <strong>WASD</strong> to move, <strong>Shift</strong> to sprint, and click to
+            drop a beacon. Positions sync to the multiplayer lobby.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h2>Engine status</h2>
+          <p class="note" data-engine-note>Engine ready.</p>
+          <div class="stat-grid">
+            <div>
+              <h4>Player</h4>
+              <p data-player-name>Guest</p>
+            </div>
+            <div>
+              <h4>World</h4>
+              <p data-world-name>Neon Plaza</p>
+            </div>
+            <div>
+              <h4>FPS</h4>
+              <p data-fps>60</p>
+            </div>
+          </div>
+          <button class="button light" id="reset-engine">Reset camera</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section alt">
+        <div class="engine-grid">
+          <div class="engine-panel">
+            <div id="engine-canvas" aria-label="3D engine canvas"></div>
+          </div>
+          <aside class="engine-card">
+            <h3>Controls</h3>
+            <ul>
+              <li>WASD + Shift to move</li>
+              <li>Space to jump</li>
+              <li>Click to drop a beacon</li>
+            </ul>
+            <div>
+              <p class="muted">Multiplayer status</p>
+              <p data-server-status>Connecting...</p>
+              <button class="button ghost" id="reconnect">Reconnect</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-block">R</span>Roblox Universe</a>
+        <p>Build anything. Play everything. Together.</p>
+      </div>
+      <p class="footer-meta">© <span data-year></span> Roblox Universe. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="engine.js"></script>
+  </body>
+</html>

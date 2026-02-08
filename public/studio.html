@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Universe | Studio</title>
+    <link rel="stylesheet" href="studio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Roblox Universe">
+          <span class="logo-block">R</span>
+          <span class="logo-word">Roblox Universe Engine</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="accounts.html">Accounts</a>
+          <a href="engine.html">Engine</a>
+          <a class="active" href="studio.html">Studio</a>
+          <a href="assets.html">Assets</a>
+          <a class="button" href="multiplayer.html">Multiplayer</a>
+        </div>
+      </nav>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Studio</p>
+          <h1>Build worlds with the in-browser Studio.</h1>
+          <p class="hero-subtitle">
+            Place blocks in the scene, adjust lighting, and publish your world to the lobby.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h2>World settings</h2>
+          <p class="note" data-publish-note>Ready to publish after playtest.</p>
+          <button class="button light" id="publish-world">Publish world</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="studio-grid">
+          <div class="studio-panel">
+            <div class="studio-toolbar">
+              <span class="pill">Terrain</span>
+              <span class="pill">Models</span>
+              <span class="pill">Scripts</span>
+              <span class="pill">Playtest</span>
+              <span class="pill">Publish</span>
+            </div>
+            <div class="studio-preview">
+              <div class="studio-preview__scene" id="studio-canvas" aria-label="Studio canvas"></div>
+              <div class="studio-preview__details">
+                <label>
+                  Environment
+                  <select data-env-select>
+                    <option value="Neon Plaza">Neon Plaza</option>
+                    <option value="Sunset City">Sunset City</option>
+                    <option value="Forest Camp">Forest Camp</option>
+                  </select>
+                </label>
+                <label>
+                  Gravity
+                  <input type="range" min="50" max="200" value="120" data-gravity-slider />
+                  <span data-gravity-label>120%</span>
+                </label>
+                <label>
+                  Multiplayer slots
+                  <input type="number" min="1" max="50" value="24" data-slots-input />
+                </label>
+                <label>
+                  Asset pack
+                  <select data-asset-pack>
+                    <option value="Parkour">Parkour kit</option>
+                    <option value="City">City builder</option>
+                    <option value="Arena">Arena weapons</option>
+                  </select>
+                </label>
+                <button class="button light" id="place-block">Place block</button>
+                <p class="note" data-block-note>Click Place block to add geometry.</p>
+              </div>
+            </div>
+          </div>
+          <div class="studio-card">
+            <h3>Placeable blocks</h3>
+            <div class="template-list">
+              <div class="template">
+                <h4>Spawn Pad</h4>
+                <p>Safe zone with glowing effects.</p>
+              </div>
+              <div class="template">
+                <h4>Speed Ramp</h4>
+                <p>Boosts players forward instantly.</p>
+              </div>
+              <div class="template">
+                <h4>Sky Platform</h4>
+                <p>Floating building surface.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-block">R</span>Roblox Universe</a>
+        <p>Build anything. Play everything. Together.</p>
+      </div>
+      <p class="footer-meta">© <span data-year></span> Roblox Universe. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="studio.js"></script>
+  </body>
+</html>

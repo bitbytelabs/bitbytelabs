@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Universe | Accounts</title>
+    <link rel="stylesheet" href="accounts.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Roblox Universe">
+          <span class="logo-block">R</span>
+          <span class="logo-word">Roblox Universe Engine</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a class="active" href="accounts.html">Accounts</a>
+          <a href="engine.html">Engine</a>
+          <a href="studio.html">Studio</a>
+          <a href="assets.html">Assets</a>
+          <a class="button" href="multiplayer.html">Multiplayer</a>
+        </div>
+      </nav>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Accounts</p>
+          <h1>Player profiles with saved avatars.</h1>
+          <p class="hero-subtitle">
+            Log in to save your avatar and sync your latest Studio builds. Profiles are stored
+            locally for this demo.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h2>Profile snapshot</h2>
+          <p class="note" data-profile-note>Sign in to update your player name.</p>
+          <div class="profile-card">
+            <div class="avatar"></div>
+            <div>
+              <h3 data-profile-name>Guest</h3>
+              <p class="muted">Status: Offline</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="accounts-grid">
+          <div class="card">
+            <h3>Log in</h3>
+            <form class="auth-form" data-login-form>
+              <label>
+                Username
+                <input type="text" name="loginName" placeholder="SkyBuilder" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="loginPassword" placeholder="••••••••" required />
+              </label>
+              <button class="button primary" type="submit">Log in</button>
+              <p class="form-note" data-login-note>Welcome back, creator.</p>
+            </form>
+          </div>
+          <div class="card">
+            <h3>Register</h3>
+            <form class="auth-form" data-register-form>
+              <label>
+                Username
+                <input type="text" name="registerName" placeholder="Nova" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="registerEmail" placeholder="nova@roblox.com" required />
+              </label>
+              <label>
+                Password
+                <input type="password" name="registerPassword" placeholder="Create a password" required />
+              </label>
+              <button class="button light" type="submit">Create account</button>
+              <p class="form-note" data-register-note>Account stored locally for demo.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-block">R</span>Roblox Universe</a>
+        <p>Build anything. Play everything. Together.</p>
+      </div>
+      <p class="footer-meta">© <span data-year></span> Roblox Universe. All rights reserved.</p>
+    </footer>
+
+    <script src="accounts.js"></script>
+  </body>
+</html>

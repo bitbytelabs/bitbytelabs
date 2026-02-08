@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Universe | Multiplayer</title>
+    <link rel="stylesheet" href="multiplayer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <nav class="nav">
+        <a class="logo" href="index.html" aria-label="Roblox Universe">
+          <span class="logo-block">R</span>
+          <span class="logo-word">Roblox Universe Engine</span>
+        </a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="accounts.html">Accounts</a>
+          <a href="engine.html">Engine</a>
+          <a href="studio.html">Studio</a>
+          <a href="assets.html">Assets</a>
+          <a class="button active" href="multiplayer.html">Multiplayer</a>
+        </div>
+      </nav>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Multiplayer</p>
+          <h1>Live server status.</h1>
+          <p class="hero-subtitle">Connect to the lobby and watch players update in real time.</p>
+        </div>
+        <div class="hero-card">
+          <h2>Server status</h2>
+          <p data-server-status>Connecting...</p>
+          <button class="button light" id="reconnect">Reconnect</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="grid two">
+          <div class="card">
+            <h3>Active players</h3>
+            <ul class="player-list" data-player-list>
+              <li>Waiting for players...</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Lobby info</h3>
+            <p class="muted">Room: Neon Plaza</p>
+            <p class="muted">Server: demo-sse-01</p>
+            <p class="muted">Sync: 200ms</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <a class="logo" href="index.html"><span class="logo-block">R</span>Roblox Universe</a>
+        <p>Build anything. Play everything. Together.</p>
+      </div>
+      <p class="footer-meta">© <span data-year></span> Roblox Universe. All rights reserved.</p>
+    </footer>
+
+    <script src="multiplayer.js"></script>
+  </body>
+</html>
