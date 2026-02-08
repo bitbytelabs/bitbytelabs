@@ -204,7 +204,7 @@
         </div>
       </section>
 
-      <section class="section" id="access">
+      <section class="section auth-section" id="access">
         <div class="section-heading">
           <p class="eyebrow">Access</p>
           <h2>Secure portal for client teams.</h2>
@@ -215,42 +215,64 @@
         </div>
         <div class="grid two auth-grid">
           <article class="card auth-card">
-            <h3>Client login</h3>
-            <p class="muted-text">
-              Sign in to review milestones, files, and shared roadmaps.
-            </p>
+            <div class="auth-header">
+              <h3>Log in</h3>
+              <p class="muted-text">
+                Sign in to review milestones, files, and shared roadmaps.
+              </p>
+            </div>
             <form class="auth-form" data-login-form>
               <label>
-                Work email
+                Username or email
                 <input type="email" name="loginEmail" placeholder="you@company.com" required />
               </label>
               <label>
                 Password
                 <input type="password" name="loginPassword" placeholder="••••••••" required />
               </label>
+              <div class="form-row">
+                <label class="checkbox">
+                  <input type="checkbox" name="rememberMe" />
+                  Remember me
+                </label>
+                <a class="auth-link" href="#">Forgot password?</a>
+              </div>
               <button class="button primary" type="submit">Log in</button>
+              <div class="auth-divider">
+                <span>or</span>
+              </div>
+              <button class="button ghost" type="button">Continue with SSO</button>
               <p class="form-note" data-login-note>Use your secure client credentials.</p>
             </form>
           </article>
           <article class="card auth-card">
-            <h3>New client signup</h3>
-            <p class="muted-text">
-              Create your portal account to unlock proposals, dashboards, and kickoff assets.
-            </p>
+            <div class="auth-header">
+              <h3>Sign up</h3>
+              <p class="muted-text">
+                Create your portal account to unlock proposals, dashboards, and kickoff assets.
+              </p>
+            </div>
             <form class="auth-form" data-signup-form>
               <label>
-                Full name
-                <input type="text" name="signupName" placeholder="Alex Rivera" required />
+                Username
+                <input type="text" name="signupName" placeholder="AlexRivera" required />
               </label>
               <label>
                 Work email
                 <input type="email" name="signupEmail" placeholder="alex@company.com" required />
               </label>
               <label>
+                Password
+                <input type="password" name="signupPassword" placeholder="Create a password" required />
+              </label>
+              <label>
                 Company
                 <input type="text" name="signupCompany" placeholder="Company name" required />
               </label>
               <button class="button light" type="submit">Create account</button>
+              <p class="auth-legal">
+                By signing up, you agree to our Terms and acknowledge the Privacy Policy.
+              </p>
               <p class="form-note" data-signup-note>We’ll email next steps within 24 hours.</p>
             </form>
           </article>
