@@ -20,28 +20,37 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const safePath = req.url === "/" ? "/index.html" : req.url;
-  const filePath = path.join(publicDir, safePath);
+  const urlPath = req.url.split("?")[0].split("#")[0];
+  const safePath = urlPath === "/" ? "/index.html" : urlPath;
+  const resolvedPath = path.resolve(publicDir, "." + safePath);
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      const notFoundPath = path.join(publicDir, "404.html");
-      fs.readFile(notFoundPath, (fallbackErr, fallbackData) => {
-        if (fallbackErr) {
-          res.writeHead(404, { "Content-Type": "text/plain" });
-          res.end("Not found");
-          return;
-        }
-
-        res.writeHead(404, { "Content-Type": "text/html" });
-        res.end(fallbackData);
-      });
+  fs.realpath(resolvedPath, (realErr, filePath) => {
+    if (realErr || !filePath.startsWith(publicDir)) {
+      res.writeHead(403, { "Content-Type": "text/plain" });
+      res.end("Forbidden");
       return;
     }
 
-    const ext = path.extname(filePath);
-    res.writeHead(200, { "Content-Type": contentTypes[ext] || "text/plain" });
-    res.end(data);
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        const notFoundPath = path.join(publicDir, "404.html");
+        fs.readFile(notFoundPath, (fallbackErr, fallbackData) => {
+          if (fallbackErr) {
+            res.writeHead(404, { "Content-Type": "text/plain" });
+            res.end("Not found");
+            return;
+          }
+
+            res.writeHead(404, { "Content-Type": "text/html" });
+            res.end(fallbackData);
+        });
+        return;
+      }
+
+      const ext = path.extname(filePath);
+      res.writeHead(200, { "Content-Type": contentTypes[ext] || "text/plain" });
+      res.end(data);
+    });
   });
 });
 
