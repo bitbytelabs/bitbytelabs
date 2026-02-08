@@ -1,0 +1,9 @@
+{
+  "name": "bitbytelabs-company-site",
+  "version": "1.0.0",
+  "description": "Company website served by a Node.js backend.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
