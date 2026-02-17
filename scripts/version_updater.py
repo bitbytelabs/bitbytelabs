@@ -85,29 +85,29 @@ def main() -> int:
     commits_file_root = os.environ.get("COMMITS_FILE_ROOT")
     commits_path = Path(args.commits_file)
 
-    if commits_file_root:
-        root_path = Path(commits_file_root).resolve()
-        resolved_commits_path = commits_path.resolve()
+    # Determine the allowed root for commits files. If COMMITS_FILE_ROOT is not set,
+    # default to the current working directory.
+    root_path = Path(commits_file_root or os.getcwd()).resolve()
+    resolved_commits_path = commits_path.resolve()
+
+    try:
+        is_within_root = resolved_commits_path.is_relative_to(root_path)  # type: ignore[attr-defined]
+    except AttributeError:
+        # Python < 3.9 compatibility
         try:
-            is_within_root = resolved_commits_path.is_relative_to(root_path)  # type: ignore[attr-defined]
-        except AttributeError:
-            # Python < 3.9 compatibility
-            try:
-                resolved_commits_path.relative_to(root_path)
-                is_within_root = True
-            except ValueError:
-                is_within_root = False
+            resolved_commits_path.relative_to(root_path)
+            is_within_root = True
+        except ValueError:
+            is_within_root = False
 
-        if not is_within_root:
-            print(
-                f"Error: commits file '{resolved_commits_path}' is outside the allowed root '{root_path}'",
-                file=sys.stderr,
-            )
-            return 1
+    if not is_within_root:
+        print(
+            f"Error: commits file '{resolved_commits_path}' is outside the allowed root '{root_path}'",
+            file=sys.stderr,
+        )
+        return 1
 
-        safe_commits_path = resolved_commits_path
-    else:
-        safe_commits_path = commits_path.resolve()
+    safe_commits_path = resolved_commits_path
 
     commits = safe_commits_path.read_text(encoding="utf-8")
     bump_level = determine_bump(commits)
