@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bit OS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="boot-screen" class="boot-screen">
+      <div class="boot-logo">Bit OS</div>
+      <p>Booting services...</p>
+      <div class="loader" aria-hidden="true"></div>
+    </div>
+
+    <div id="os" class="os hidden">
+      <header class="top-bar">
+        <button id="activities-btn" class="top-action">Activities</button>
+        <strong>Bit OS</strong>
+        <div id="top-time"></div>
+      </header>
+
+      <aside class="dock" aria-label="Bit OS dock">
+        <button class="dock-app" data-open="files" title="Files">📁</button>
+        <button class="dock-app" data-open="terminal" title="Terminal">🖥️</button>
+        <button class="dock-app" data-open="notes" title="Notes">📝</button>
+        <button class="dock-app" data-open="settings" title="Settings">⚙️</button>
+      </aside>
+
+      <main class="workspace" id="workspace">
+        <section id="overview" class="overview hidden" aria-label="App overview">
+          <button class="overview-app" data-open="files">📁<span>Files</span></button>
+          <button class="overview-app" data-open="terminal">🖥️<span>Terminal</span></button>
+          <button class="overview-app" data-open="notes">📝<span>Notes</span></button>
+          <button class="overview-app" data-open="settings">⚙️<span>Settings</span></button>
+        </section>
+
+        <section id="files" class="window hidden" data-window>
+          <header class="window-header" data-drag-handle>
+            <span>Files</span>
+            <button data-close="files" aria-label="Close files">✕</button>
+          </header>
+          <div class="window-content">
+            <div class="files-grid" id="files-grid"></div>
+            <p class="file-preview" id="file-preview">Select a file to preview.</p>
+          </div>
+        </section>
+
+        <section id="terminal" class="window hidden" data-window>
+          <header class="window-header" data-drag-handle>
+            <span>Terminal</span>
+            <button data-close="terminal" aria-label="Close terminal">✕</button>
+          </header>
+          <div class="window-content terminal-shell">
+            <pre id="terminal-log"></pre>
+            <label class="terminal-input-row">
+              <span>bit@bit-os:~$</span>
+              <input id="terminal-input" type="text" autocomplete="off" placeholder="help, ls, open notes, date..." />
+            </label>
+          </div>
+        </section>
+
+        <section id="notes" class="window hidden" data-window>
+          <header class="window-header" data-drag-handle>
+            <span>Notes</span>
+            <button data-close="notes" aria-label="Close notes">✕</button>
+          </header>
+          <div class="window-content">
+            <textarea id="notes-input" placeholder="Write notes here... (autosaved in browser)"></textarea>
+          </div>
+        </section>
+
+        <section id="settings" class="window hidden" data-window>
+          <header class="window-header" data-drag-handle>
+            <span>Settings</span>
+            <button data-close="settings" aria-label="Close settings">✕</button>
+          </header>
+          <div class="window-content settings-panel">
+            <label>
+              Accent color
+              <input id="accent-picker" type="color" value="#d97706" />
+            </label>
+            <label class="inline-toggle">
+              <input id="compact-toggle" type="checkbox" />
+              Compact dock
+            </label>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyAyku_mtqjtN2fhsHweQ8C5rh5nZT4X9ec",
+        authDomain: "bitbytelabs-56eb1.firebaseapp.com",
+        databaseURL: "https://bitbytelabs-56eb1-default-rtdb.firebaseio.com",
+        projectId: "bitbytelabs-56eb1",
+        storageBucket: "bitbytelabs-56eb1.firebasestorage.app",
+        messagingSenderId: "925575010294",
+        appId: "1:925575010294:web:ac7e7aafabf8b05bce99d7",
+        measurementId: "G-EQ53N2L5E9"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+  </body>
+</html>
