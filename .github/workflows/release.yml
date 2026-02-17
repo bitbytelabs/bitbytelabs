@@ -1,0 +1,57 @@
+name: Release from Conventional Commits
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine current and next version
+        id: bump
+        run: |
+          CURRENT_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+
+          if [ "$CURRENT_TAG" = "v0.0.0" ] && ! git rev-parse "$CURRENT_TAG" >/dev/null 2>&1; then
+            git log --pretty=format:%B > commits.txt
+          else
+            git log "${CURRENT_TAG}..HEAD" --pretty=format:%B > commits.txt
+          fi
+
+          python scripts/version_updater.py --current "$CURRENT_TAG" --commits-file commits.txt > bump.env
+          cat bump.env
+
+          BUMP_LEVEL=$(awk -F= '/BUMP_LEVEL/ {print $2}' bump.env)
+          NEXT_VERSION=$(awk -F= '/NEXT_VERSION/ {print $2}' bump.env)
+
+          echo "bump_level=$BUMP_LEVEL" >> "$GITHUB_OUTPUT"
+          echo "next_version=$NEXT_VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub release
+        if: steps.bump.outputs.bump_level != 'none'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.bump.outputs.next_version }}
+          name: ${{ steps.bump.outputs.next_version }}
+          generate_release_notes: true
+
+      - name: No release
+        if: steps.bump.outputs.bump_level == 'none'
+        run: echo "No fix/feat/feat! commits found; skipping release."
