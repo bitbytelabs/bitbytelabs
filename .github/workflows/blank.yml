@@ -1,0 +1,25 @@
+name: Hydrate Submodules as Folders
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  hydrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: false   # since your script handles hydration
+          fetch-depth: 0
+
+      - name: Make script executable
+        run: chmod +x ./scripts/hydrate_submodules_as_folders.sh
+
+      - name: Run hydrate script
+        run: ./scripts/hydrate_submodules_as_folders.sh
