@@ -19,3 +19,9 @@
 [submodule "stockfish-wiki-bot"]
 	path = stockfish-wiki-bot
 	url = https://github.com/official-stockfish/stockfish-wiki-bot.git
+[submodule "networks"]
+	path = networks
+	url = https://github.com/official-stockfish/networks.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/official-stockfish/docs.git
