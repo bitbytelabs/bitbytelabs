@@ -1,0 +1,19 @@
+<div id="main-menu" class="main-menu">
+  <ul>
+    {{ $currentPage := . }}
+    {{ range .Site.Menus.main }}
+    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
+      <a href="{{ .URL }}" 
+        {{ if or (strings.HasPrefix .URL "http") (strings.HasPrefix .URL "https") }}
+          target="_blank"
+        {{ end }}>
+        {{ .Pre }}
+        <span>{{ .Name }}</span>
+        {{ if or (strings.HasPrefix .URL "http") (strings.HasPrefix .URL "https") }}
+          {{ partial "arrow-up-right.html" . }}
+        {{ end }}
+      </a>
+    </li>
+    {{end}}
+  </ul>
+</div>

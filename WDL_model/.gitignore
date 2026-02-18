@@ -1,0 +1,12 @@
+*.png
+*.json
+*.pgn
+*.gz
+*.log
+*.exe
+
+scoreWDLstat
+
+pgns*
+Stockfish
+books

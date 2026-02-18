@@ -1,0 +1,138 @@
+// Colors
+$body-bg: #1b1b1f;
+$green1: hsl(142, 44%, 15%);
+$green2: hsl(142, 44%, 25%);
+$green3: hsl(142, 44%, 30%);
+$green4: hsl(142, 44%, 37%);
+$green5: hsl(142, 44%, 43%);
+$green6: hsl(142, 44%, 47%);
+$green7: hsl(142, 44%, 55%);
+
+$primary: $green6;
+$secondary: #f88379;
+$black: #2f2f41;
+$white: #ffffff;
+$white-offset: #e1e1e1;
+$steel: $white-offset;
+
+// Links
+$link-color: lighten($primary, 10%);
+$link-decoration: none;
+$link-hover-color: $green6;
+$link-hover-decoration: underline;
+
+// Fonts
+$font-family-base: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+               "Helvetica Neue", sans-serif;
+$font-family-heading: $font-family-base;
+
+// Footer
+
+$footer-background-color: $green2;
+$footer-text-color: $white-offset;
+
+// Bootstrap
+@import 'bootstrap-variables';
+@import 'bootstrap/bootstrap-reboot';
+@import 'bootstrap/bootstrap-grid';
+@import 'bootstrap/card';
+@import 'bootstrap/badge';
+@import 'bootstrap/buttons';
+@import 'bootstrap/utilities/borders';
+@import 'bootstrap/utilities/text';
+@import 'bootstrap/utilities/sizing';
+@import 'bootstrap/utilities/overflow';
+// @import 'bootstrap/bootstrap'; // Uncomment this line to import the entire Bootstrap library
+
+
+// Libraries
+@import 'libraries/hamburgers/hamburgers';
+
+// Components
+@import 'components/type';
+@import 'components/page';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/logo';
+@import 'components/main-menu';
+@import 'components/main-menu-mobile';
+@import 'components/hamburger';
+@import 'components/buttons';
+@import 'components/title';
+@import 'components/content';
+@import 'components/intro';
+@import 'components/intro-image';
+@import 'components/strip';
+@import 'components/feature';
+@import 'components/social';
+@import 'components/horizontal-line';
+
+// Pages
+@import 'pages/home';
+
+body {
+  font-size: 16px;
+  line-height: 1.2;
+  font-family: $font-family-base;
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+}
+
+// Display breakpoints for DEV
+{{ if .Site.IsServer }}
+body:after {
+  color: #000000;
+  font-size: 12px;
+  padding: 5px;
+  font-weight: bold;
+  right: 10px;
+  position: fixed;
+  text-align: center;
+  text-transform: uppercase;
+  bottom: 10px;
+  width: 200px;
+  z-index: 9999;
+  border: solid 1px #000000;
+  @each $name, $value in $grid-breakpoints {
+    @include media-breakpoint-up($name) {
+      content: '#{$name} - min-width: #{$value}';
+    }
+  }
+}
+{{ end }}
+
+.grid {
+  position: relative;
+  background-image: url('/images/grid.svg');
+  background-size: 500px 500px;
+}
+.grid::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 75%, $body-bg 100%);
+  pointer-events: none;
+}
+.download-item:last-child {
+  border-bottom: none !important;
+}
+
+@each $name, $value in $grays {
+  .bg-#{$name} {
+    background-color: $value;
+  }
+}
+
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
+}
+  
+@supports (font-variation-settings: normal) {
+  :root { font-family: InterVariable, sans-serif; }
+}

@@ -1,0 +1,25 @@
+.feature {
+  height: 100%;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: $gray-900;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: 0.3s;
+  img {
+    width: 100%;
+    height: auto;
+  }
+  .feature-content {
+    margin-bottom: auto;
+    text-align: initial;
+  }
+  h2 {
+    font-weight: 600;
+  }
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+}

@@ -1,0 +1,87 @@
+{{ define "title" }}{{ .Site.Title }}{{ end}}
+{{ define "body_classes" }}page-home{{ end }}
+
+{{ define "meta_tags" }}
+<meta name="description" content="{{ .Description | default .Site.Params.homepage_meta_tags.meta_description }}"/>
+
+<meta name="twitter:image:src" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+<meta name="twitter:site" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_site }}" />
+<meta name="twitter:card" content="{{ .Site.Params.homepage_meta_tags.meta_twitter_card }}" />
+<meta name="twitter:title" content="{{ .Title | default .Site.Params.homepage_meta_tags.meta_og_title }}" />
+<meta name="twitter:description" content="{{ .Description | default .Site.Params.homepage_meta_tags.meta_description }}" />
+
+<meta property="og:image" content="{{ .Site.Params.homepage_meta_tags.meta_og_image }}" />
+<meta property="og:image:alt" content="{{ .Description | default .Site.Params.homepage_meta_tags.meta_description }}" />
+<meta property="og:site_name" content="{{ .Site.Params.homepage_meta_tags.meta_og_site_name }}" />
+<meta property="og:type" content="{{ .Site.Params.homepage_meta_tags.meta_og_type }}" />
+<meta property="og:title" content="{{ .Title | default .Site.Params.homepage_meta_tags.meta_og_title }}" />
+<meta property="og:url" content="{{ .Site.Params.homepage_meta_tags.meta_og_url }}" />
+<meta property="og:description" content="{{ .Description | default .Site.Params.homepage_meta_tags.meta_description }}" />
+
+<meta name="theme-color" content="{{ .Site.Params.homepage_meta_tags.meta_theme_color }}" />
+{{ end }}
+
+{{ define "main" }}
+<div class="intro">
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-12 col-md-7 col-lg-8 col-xl-7 order-2 order-md-1">
+        <h1 class="name">
+          <span class="clip">{{ .Title }}</span>
+        </h1>
+        <h1>{{ .Description }}</h1>
+        <div class="tagline">{{ .Content }}</div>
+        <div class="actions mb-5">
+          <a href="/download/" class="button mb-1">Download</a>
+          <a href="https://github.com/official-stockfish/Stockfish" target="_blank" class="button button-secondary">View on GitHub</a>
+        </div>
+        <p class="mb-1">
+          <strong>
+            <a href="/blog/">Latest from the blog</a>
+          </strong>
+        </p>
+        <ul>
+        {{- range ( where site.RegularPages "Section" "blog" | first 3 ) }}
+        <li class="blog-preview">
+          <span class="muted">{{ .PublishDate.Format "2006-01-02" }}</span>: <a href="{{ .Permalink }}">{{ .Title }}</a>
+        </li>
+        {{- end}}
+        </ul>
+      </div>
+      {{ if .Params.intro_image }}
+      <div class="col-12 col-md-5 col-lg-4 col-xl-5 order-1 order-md-2 position-relative">
+        <div class="image-container mb-3 mb-md-0">
+          <div class="image-bg"></div>
+          <img alt={{ .Title }} class="intro-image{{ if .Params.intro_image_absolute }} intro-image-absolute{{ end }}{{ if .Params.intro_image_hide_on_mobile }} intro-image-hide-mobile{{ end }}" src="{{ .Params.intro_image | relURL }}" />
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+
+{{if .Site.Data.features}}
+<div>
+  <div class="container pt-6 pb-6">
+    <div class="row justify-content-center">
+      {{ range .Site.Data.features }}
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <h2 class="feature-title">{{ .title }}</h2>
+          <div class="feature-content">
+            <p>{{ .description }}</p>
+          </div>
+          <a href="{{ .url }}" class="button" target="_blank">{{ .button_text }}</a>
+        </div>
+      </div>
+      {{end}}
+    </div>
+  </div>
+</div>
+{{end}}
+
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}

@@ -1,0 +1,53 @@
+:root {
+  --vp-c-indigo-1: #18794e; /* Changed blue to green */
+  --vp-c-indigo-2: #299764; /* Changed blue to green */
+  --vp-c-indigo-3: #30a46c; /* Changed blue to green */
+  --vp-c-indigo-soft: rgba(16, 185, 129, 0.14); /* Changed blue to green */
+}
+
+.dark {
+  --vp-c-indigo-1: #3dd68c; /* Changed blue to green */
+  --vp-c-indigo-2: #30a46c; /* Changed blue to green */
+  --vp-c-indigo-3: #298459; /* Changed blue to green */
+  --vp-c-indigo-soft: rgba(16, 185, 129, 0.16); /* Changed blue to green */
+}
+
+:root {
+  --green0: hsl(178, 41%, 13%);
+  --green1: hsl(142, 44%, 15%);
+  --green2: hsl(142, 44%, 25%);
+  --green3: hsl(142, 44%, 30%);
+  --green4: hsl(142, 44%, 37%);
+  --green5: hsl(142, 44%, 43%);
+  --green6: hsl(142, 44%, 47%);
+  --green7: hsl(142, 44%, 55%);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(
+    120deg,
+    var(--green2),
+    var(--green7) 80%
+  );
+  --vp-home-hero-image-filter: blur(40px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --vp-home-hero-image-filter: blur(56px);
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+}
+
+.image-bg {
+  background: linear-gradient(45deg, var(--green7) 0%, var(--green7) 100%) top left,
+              linear-gradient(-45deg, var(--green1) 0%, var(--green1) 100%) top right,
+              linear-gradient(-135deg, var(--green4) 0%, var(--green4) 100%) bottom right,
+              linear-gradient(135deg, var(--green1) 0%, var(--green1) 100%) bottom left  !important;
+  background-size: 50% 50% !important;
+  background-repeat: no-repeat !important;
+  border-radius: 25% !important;
+}

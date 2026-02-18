@@ -1,0 +1,51 @@
+name: Deploy
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Add outline to Markdown files
+        run: |
+          find stockfish-wiki -name "*.md" -exec sed -i '1i\---\noutline: deep\n---\n\n' {} \;
+
+      - name: Add outline to Markdown files
+        run: |
+          find fishtest-wiki -name "*.md" -exec sed -i '1i\---\noutline: deep\n---\n\n' {} \;
+
+      - name: Add outline to Markdown files
+        run: |
+          find nnue-pytorch-wiki -name "*.md" -exec sed -i '1i\---\noutline: deep\n---\n\n' {} \;
+
+      - name: Remove breaking fishtest files
+        run: |
+          rm -f "fishtest-wiki/A-developer's-guide-to-the-Stockfish-command-line.md"
+
+      - run: npm ci
+      - name: Build
+        run: npm run docs:build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .vitepress/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

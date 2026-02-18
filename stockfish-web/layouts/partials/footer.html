@@ -1,0 +1,18 @@
+{{ partial "horizontal-line.html" . }}
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          {{ if .Site.Data.social }}
+            {{ partial "social.html" . }}
+          {{ end }}
+          {{ if .Site.Params.footer.copyright_text }}
+            <div class="copyright">{{ .Site.Params.footer.copyright_text | safeHTML }}</div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
