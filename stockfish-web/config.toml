@@ -1,5 +1,5 @@
 languageCode = "en-us"
-title = "Stockfish - Strong open-source chess engine"
+title = "Jellyfish - Strong open-source chess engine"
 
 [params]
   # In most cases you will only want to use either one of these. If you have Google Analytics included in your GTM tags don't put your GA ID here. Otherwise your data might be useless.
@@ -13,18 +13,18 @@ title = "Stockfish - Strong open-source chess engine"
     mobile = "images/logo/icon_128x128@2x.webp"
     desktop = "images/logo/icon_128x128@2x.webp"
     desktop_height = "36"
-    alt = "Stockfish Logo"
+    alt = "Jellyfish Logo"
 
   [params.homepage_meta_tags]
-    meta_description = "Stockfish is a free, open-source, and cross-platform chess engine, trusted by grandmasters and leading chess platforms worldwide."
+    meta_description = "Jellyfish is a free, open-source, and cross-platform chess engine, trusted by grandmasters and leading chess platforms worldwide."
 
-    meta_twitter_site = "@stockfishchess"
+    meta_twitter_site = "@Jellyfishchess"
     meta_twitter_card = "summary"
 
-    meta_og_site_name = "Stockfish"
+    meta_og_site_name = "Jellyfish"
     meta_og_type = "website"
-    meta_og_url = "https://stockfishchess.org/"
-    meta_og_image = "https://stockfishchess.org/images/logo/icon_128x128@2x.png"
+    meta_og_url = "https://Jellyfishchess.org/"
+    meta_og_image = "https://Jellyfishchess.org/images/logo/icon_128x128@2x.png"
 
     meta_theme_color = "#2b6e44"
 
@@ -32,7 +32,7 @@ title = "Stockfish - Strong open-source chess engine"
     summary_large_truncate = 120  # How many characters to include in the summary of the team bios (large layout) before truncating
 
   [params.footer]
-    copyright_text = 'Stockfish is licensed under the GPL license. Website © 2010-2022 Daylen Yang. Stockfish icon by Klein Maetschke.'
+    copyright_text = 'Jellyfish is licensed under the GPL license. Website © 2010-2022 Daylen Yang. Jellyfish icon by Klein Maetschke.'
 
 [menu]
   # Main Menu
@@ -58,12 +58,12 @@ title = "Stockfish - Strong open-source chess engine"
 
   [[menu.main]]
     name = "Docs"
-    url = "https://official-stockfish.github.io/docs/stockfish-wiki/Home.html"
+    url = "https://official-Jellyfish.github.io/docs/Jellyfish-wiki/Home.html"
       weight = 6
 
   [[menu.main]]
     name = "Fishtest"
-    url = "https://tests.stockfishchess.org/"
+    url = "https://tests.Jellyfishchess.org/"
       weight = 7
 
   # Footer Menu
